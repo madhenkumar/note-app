@@ -21,7 +21,7 @@ export default function Home() {
   async function create(data: FormData){
     try{
       
-      fetch('http://localhost:3000/api/create',{
+      fetch('/api/create',{
         body: JSON.stringify(data),
         headers: {
           'Content-type':'application/json'

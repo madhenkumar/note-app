@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 
 async function fetchBlogs() {
     
-    const res = await fetch("http://localhost:3000/api/create",{
+    const res = await fetch("/api/create",{
       next: {
         revalidate: 10,
       },

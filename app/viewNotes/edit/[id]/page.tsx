@@ -9,7 +9,7 @@ type UpdateBlogParams = {
   id: string;
 };
 const updateBlog = async (note: UpdateBlogParams) => {
-  const res = fetch(`http://localhost:3000/api/create/${note.id}`, {
+  const res = fetch(`/api/create/${note.id}`, {
     method: "PUT",
     body: JSON.stringify({ title: note.title, content: note.content }),
     //@ts-ignore
@@ -20,7 +20,7 @@ const updateBlog = async (note: UpdateBlogParams) => {
 
 
 const getBlogById = async (id: string) => {
-  const res = await fetch(`http://localhost:3000/api/create/${id}`);
+  const res = await fetch(`/api/create/${id}`);
   const data = await res.json();
   return data.post;
 };
