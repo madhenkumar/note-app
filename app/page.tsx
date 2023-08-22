@@ -13,16 +13,8 @@ interface FormData {
   id: string
 }
 
-interface Notes{
-  notes: {
-    id: string
-    title: string
-    content: string
-  }[]
-}
 
-
-export default function Home({notes}: Notes) {
+export default function Home() {
 
   const [form, setForm] = useState<FormData>({title: '',content: '',id: ''});
 
