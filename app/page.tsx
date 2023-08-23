@@ -66,14 +66,19 @@ export default function Home() {
   }
 
   return ( 
-    <main >
+    <main className="bg-black text-white h-screen p-5" >
     <div>
-      <h1 className="text-center font-bold text-2xl mt-4"> Notes </h1>
+      <div className="flex justify-between">
+      <h1 className="text-center font-bold text-4xl mb-5"> Notes </h1>
+      <Link href="/viewNotes" className="underline text-2xl">View Notes</Link>
+      </div>
+
+
       <form onSubmit={e=>{
         e.preventDefault()
         handleSubmit(form)
       }}
-      className='w-auto min-w-[25%] max-w-min mx-auto space-y-6 flex flex-col items-stretch'>
+      className='w-full space-y-6 flex flex-col items-stretch'>
         <input type="text"
         placeholder="Title"
         value = {form.title}
@@ -86,11 +91,10 @@ export default function Home() {
         onChange={e=>setForm({...form,content:e.target.value})}
         className="border-2 rounded border-gray-600 p-1"
         /> 
-        <button type="submit" className="bg-blue-500 text-white rounded p-1">
-          Add       
+        <button type="submit" className="bg-blue-500 text-white rounded p-2 hover:bg-blue-600">
+          Add Note       
           </button>
       </form>
-        <Link href="/viewNotes">View Notes</Link>
     </div>  
     
       
