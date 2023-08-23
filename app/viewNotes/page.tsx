@@ -1,17 +1,20 @@
 "use client";
+import axios from "axios";
 import Link from "next/link";
-import { useRouter } from 'next/navigation'
 
 async function fetchBlogs() {
     
-    const res = await fetch("/api/create/",{
-      next: {
-        revalidate: 10,
-      },
-      
-    });
-    const data = await res.json();
-    return data.posts; 
+  try {
+    const response = await axios.get('/api/create', {});
+
+    // Axios automatically checks for response status and throws an error if it's not OK (e.g., 404 or 500 errors)
+
+    return response.data.posts;
+  } catch (error) {
+    console.error('Error fetching blogs:', error);
+    throw error; // You can handle the error or rethrow it as needed
+  }
+
   }
 
 

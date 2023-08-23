@@ -1,5 +1,6 @@
 "use client"
 
+import Axios from "axios";
 import { getNoteSchema } from '@/schemas/form/formf';
 import { useEffect, useState } from 'react';
 import { prisma } from '../lib/prisma';
@@ -13,25 +14,48 @@ interface FormData {
   id: string
 }
 
+// Axios.post('/api/create/',{
+      //   body: JSON.stringify(data),
+      //   headers: {
+      //     'Content-type':'application/json'
+      //   }
+      // })
 
 export default function Home() {
 
   const [form, setForm] = useState<FormData>({title: '',content: '',id: ''});
 
-  async function create(data: FormData){
-    try{
-      
-      fetch('/api/create',{
-        body: JSON.stringify(data),
+  // async function create(data: FormData){
+  //   try{  
+  //     fetch('http://localhost:3000/api/create/',{
+  //       body: JSON.stringify(data),
+  //       headers: {
+  //         'Content-type':'application/json'
+  //       },
+  //       method: 'POST'
+  //     }).then(() => setForm({title :'', content:'',id:''}))
+  //   }  catch(error){
+  //     console.log(error);
+  //   }
+  // }
+
+  const create = async (data : FormData) => {
+    try {
+      const apiUrl = '/api/create/';
+  
+      await Axios.post(apiUrl, JSON.stringify(data), {
         headers: {
-          'Content-type':'application/json'
+          'Content-Type': 'application/json',
+          // Add other headers here if necessary
         },
-        method: 'POST'
-      }).then(() => setForm({title :'', content:'',id:''}))
-    }  catch(error){
-      console.log(error);
+      });
+  
+      // Assuming setForm is a function to reset your form state
+      setForm({ title: '', content: '', id: '' });
+    } catch (error) {
+      console.error(error);
     }
-  }
+  };
 
   const handleSubmit = async (data: FormData) => {
     try {

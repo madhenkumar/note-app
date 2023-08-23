@@ -1,4 +1,5 @@
 "use client"
+import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Fragment, useEffect, useRef, useState } from "react";
@@ -8,15 +9,36 @@ type UpdateBlogParams = {
   content: string;
   id: string;
 };
+// const updateBlog = async (note: UpdateBlogParams) => {
+//   const res = axios.put(`/api/create/${note.id}`, {
+//     method: "PUT",
+//     body: JSON.stringify({ title: note.title, content: note.content }),
+//     //@ts-ignore
+//     "Content-Type": "application/json",
+//   });
+//   return (await res).json();
+// };
+
+
 const updateBlog = async (note: UpdateBlogParams) => {
-  const res = fetch(`/api/create/${note.id}`, {
-    method: "PUT",
-    body: JSON.stringify({ title: note.title, content: note.content }),
-    //@ts-ignore
-    "Content-Type": "application/json",
-  });
-  return (await res).json();
+  try {
+    const response = await axios.put(`/api/create/${note.id}`, {
+      title: note.title,
+      content: note.content,
+    }, {
+      headers: {
+        'Content-Type': 'application/json',
+        // Add other headers here if necessary
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.error('Error updating blog:', error);
+    throw error; // You can handle the error or rethrow it as needed
+  }
 };
+
 
 
 const getBlogById = async (id: string) => {
@@ -42,6 +64,7 @@ const EditBlog = ({ params }: { params: { id: string } }) => {
         console.log(err);
       });
   }, []);
+
 
 const handleSubmit = async (e: any) => {
       e.preventDefault();
