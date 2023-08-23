@@ -6,8 +6,8 @@ import { useState } from "react";
 async function fetchBlogs() {
     
   try {
-    const response = await axios.get('/api/create', {});
-    // https://note-app-eta-blue.vercel.app/
+    const response = await axios.get('https://note-app-eta-blue.vercel.app/api/create', {});
+    // 
     // Axios automatically checks for response status and throws an error if it's not OK (e.g., 404 or 500 errors)
 
     return response.data.posts;
