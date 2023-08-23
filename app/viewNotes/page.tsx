@@ -5,7 +5,7 @@ import Link from "next/link";
 async function fetchBlogs() {
     
   try {
-    const response = await axios.get('/api/create', {});
+    const response = await axios.get('salodpezp.vercel.app/api/create', {});
 
     // Axios automatically checks for response status and throws an error if it's not OK (e.g., 404 or 500 errors)
 
