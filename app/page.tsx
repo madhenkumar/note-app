@@ -83,15 +83,15 @@ export default function Home() {
         placeholder="Title"
         value = {form.title}
         onChange={e=> setForm({...form,title:e.target.value})}
-        className="border-2 rounded border-gray-600 p-1"
+        className="border-2 rounded border-gray-600 p-1 text-black"
         />
         <textarea
         placeholder ="Content"
         value = {form.content}
         onChange={e=>setForm({...form,content:e.target.value})}
-        className="border-2 rounded border-gray-600 p-1"
+        className="border-2 rounded border-gray-600 p-1 text-black"
         /> 
-        <button type="submit" className="bg-blue-500 text-white rounded p-2 hover:bg-blue-600">
+        <button type="submit" className="bg-white text-black rounded p-2 hover:bg-slate-100">
           Add Note       
           </button>
       </form>
