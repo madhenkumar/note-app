@@ -41,7 +41,7 @@ export default function Home() {
 
   const create = async (data : FormData) => {
     try {
-      const apiUrl = '/api/create';
+      const apiUrl = 'https://note-iyx4ofndz-salodpezp.vercel.app/api/create';
   
       await Axios.post(apiUrl, JSON.stringify(data), {
         headers: {

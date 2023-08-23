@@ -22,7 +22,7 @@ type UpdateBlogParams = {
 
 const updateBlog = async (note: UpdateBlogParams) => {
   try {
-    const response = await axios.put(`/api/create/${note.id}`, {
+    const response = await axios.put(`https://note-iyx4ofndz-salodpezp.vercel.app/api/create/${note.id}`, {
       title: note.title,
       content: note.content,
     }, {
