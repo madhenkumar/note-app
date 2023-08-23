@@ -36,7 +36,7 @@ async function fetchBlogs() {
          <h1 className="text-4xl font-bold mb-5">Your notes</h1>
          <Link href="/" className="text-2xl bg-white text-black w-full flex p-2 rounded-md justify-center hover:bg-slate-100">Go Back Home</Link>
          <ul>
-         {posts?.map((note: any)=>(
+         {posts?.reverse().map((note: any)=>(
             <li key={note.id} className="border-b border-gray-600 p-2">
               <div className="flex justify-between hover:bg-slate-950">
                 <div className="flex justify-between items-center w-full">
