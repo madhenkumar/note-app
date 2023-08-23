@@ -22,7 +22,7 @@ type UpdateBlogParams = {
 
 const updateBlog = async (note: UpdateBlogParams) => {
   try {
-    const response = await axios.put(`https://note-iyx4ofndz-salodpezp.vercel.app/api/create/${note.id}`, {
+    const response = await axios.put(`https://note-app-eta-blue.vercel.app/api/create/${note.id}`, {
       title: note.title,
       content: note.content,
     }, {
@@ -42,7 +42,7 @@ const updateBlog = async (note: UpdateBlogParams) => {
 
 
 const getBlogById = async (id: string) => {
-  const res = await fetch(`/api/create/${id}`);
+  const res = await fetch(`https://note-app-eta-blue.vercel.app/api/create/${id}`);
   const data = await res.json();
   return data.post;
 };
