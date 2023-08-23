@@ -1,11 +1,12 @@
 "use client";
 import axios from "axios";
 import Link from "next/link";
+import { useState } from "react";
 
 async function fetchBlogs() {
     
   try {
-    const response = await axios.get('salodpezp.vercel.app/api/create', {});
+    const response = await axios.get('/api/create', {});
 
     // Axios automatically checks for response status and throws an error if it's not OK (e.g., 404 or 500 errors)
 
@@ -21,10 +22,14 @@ async function fetchBlogs() {
 
 
   // eslint-disable-next-line @next/next/no-async-client-component
-  export default async function Home() {
-    const posts = await fetchBlogs();
+  export default function Home() {
+    const [posts, setPosts] = useState([]);
+    async function getPosts() {
+      const posts = await fetchBlogs();
+      setPosts(posts);
+    }
     // console.log(posts);
-  
+    void getPosts();
     return (
       <main >
          <div className="w-auto min-w-[25%] max-w-min mt-20 mx-auto space-y-6 flex flex-col items-stretch">

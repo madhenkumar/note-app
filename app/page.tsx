@@ -41,7 +41,7 @@ export default function Home() {
 
   const create = async (data : FormData) => {
     try {
-      const apiUrl = 'salodpezp.vercel.app/api/create';
+      const apiUrl = '/api/create';
   
       await Axios.post(apiUrl, JSON.stringify(data), {
         headers: {
